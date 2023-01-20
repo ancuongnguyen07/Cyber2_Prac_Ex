@@ -144,6 +144,21 @@ The first line.The second line.
 **NOTE**: please remember to wrap your text around 80 characters while
 editting the report for better visual.
 
+### Include TeX files
+The idea here is that we organize each task in a separate TeX file stored
+in the folder `tex`.
+
+In order to insert those TeX files, we use the command
+```tex
+\include{file_path}
+% in this case the path will be './tex/file_name'
+```
+
+For example
+```tex
+\include{./tex/task1.tex}
+```
+
 ## Starting a new report
 Run the following command to start a new folder for the practical exercise (if the folder for the corresponding exercise does not exist)
 ```bash
@@ -157,8 +172,11 @@ source starter.sh XSS
 NOTE: after running the above script, the current directory will be moved to the newly created folder.
 
 ## Git workflow
-```
+```shell
+git pull --rebase
 # edit, edit, edit
+make
+# ensure that no error is raised.
 git add .
 git commit -m <message>
 # the message should start with topic title in []
