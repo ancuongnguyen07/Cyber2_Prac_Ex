@@ -104,7 +104,7 @@ I think most of sources we will use is online articles. So the simple format for
     title = {title_here},
     author = {author_here},
     url = {url_here},
-    urldate = {yyyy-mm-dd} % the date we accessed, not the publishing day
+    urldate = {yyyy-mm-dd} % the date we accessed, not the publishing date
 }
 ```
 
@@ -141,8 +141,31 @@ it will be rendered as
 The first line.The second line.
 ```
 
+**NOTE**: please remember to wrap your text around 80 characters while
+editting the report for better visual.
+
 ## Starting a new report
-TODO
+Run the following command to start a new folder for the practical exercise (if the folder for the corresponding exercise does not exist)
+```bash
+source starter.sh <folder_name>
+```
+For example,
+```bash
+source starter.sh XSS
+```
+
+NOTE: after running the above script, the current directory will be moved to the newly created folder.
 
 ## Git workflow
-TODO
+```
+# edit, edit, edit
+git add .
+git commit -m <message>
+# the message should start with topic title in []
+# for example: if you are working on the task 5 of the XSS exercise
+# you can create a message as "[XSS][task_5] first draft"
+# the idea here is that it makes easier for us to know what is the target of
+# a specific commit by only looking at the very first letters.
+git pull --rebase
+git push origin master
+```
