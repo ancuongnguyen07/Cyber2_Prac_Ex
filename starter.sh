@@ -6,3 +6,9 @@ rm -r ./template/build 2> /dev/null
 cp ./template/* ./$folder
 cd ./$folder
 mkdir tex
+cd ./tex
+for i in {1..$2}
+do
+    touch task$i.tex
+done
+cd ../

@@ -162,11 +162,13 @@ For example
 ## Starting a new report
 Run the following command to start a new folder for the practical exercise (if the folder for the corresponding exercise does not exist)
 ```bash
-source starter.sh <folder_name>
+source starter.sh <folder_name> <number_of_tasks>
+# <number_of_tasks> here is the total number of tasks we will
+# do in the exercise.
 ```
 For example,
 ```bash
-source starter.sh XSS
+source starter.sh XSS 7
 ```
 
 NOTE: after running the above script, the current directory will be moved to the newly created folder.
