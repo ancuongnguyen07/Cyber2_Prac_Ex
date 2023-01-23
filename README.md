@@ -53,7 +53,7 @@ Ensure that the image file was stored in `figures` folder.
 ```tex
 \begin{picture}
     \centering
-    \includegraphics[width=\textwidth height=\textheight,keepaspectratio]{file_name}
+    \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{file_name}
     \caption{title_of_figure}\label{fig:variable_name}
 \end{picture}
 ```
