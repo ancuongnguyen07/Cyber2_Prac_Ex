@@ -144,6 +144,16 @@ The first line.The second line.
 **NOTE**: please remember to wrap your text around 80 characters while
 editting the report for better visual.
 
+### Quotes
+If you want to use "" or " in LaTeX, use the backtick symbol ``` for opening quote
+in LaTeX.
+
+For example
+```tex
+``Hello world'' % it will be rendered as "Hello World"
+`Hello world' % it will be rendered as 'Hello World'
+```
+
 ### Include TeX files
 The idea here is that we organize each task in a separate TeX file stored
 in the folder `tex`.
