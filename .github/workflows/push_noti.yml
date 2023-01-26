@@ -1,0 +1,17 @@
+name: Push commits notifications Telegram chat
+
+on:
+  push:
+    branches:
+      - test/bot
+    
+jobs:
+  push_noti:
+    runs-on: ubuntu-latest
+    steps:
+      - name: send telegram message on push
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_CHAT_ID }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: test bot message on Git push using Telegram Bot
