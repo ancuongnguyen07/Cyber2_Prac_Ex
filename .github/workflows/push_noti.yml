@@ -14,4 +14,4 @@ jobs:
         with:
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
-          message: test bot message on Git push using Telegram Bot
+          message: test bot message on Git push using Telegram_Bot
