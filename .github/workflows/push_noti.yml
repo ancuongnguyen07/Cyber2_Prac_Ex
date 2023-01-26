@@ -3,7 +3,7 @@ name: Push commits notifications Telegram chat
 on:
   push:
     branches:
-      - test/bot
+      - master
     
 jobs:
   push_noti:
