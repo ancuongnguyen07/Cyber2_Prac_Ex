@@ -13,5 +13,7 @@ $(DIR_BUILD)/$(MAIN).pdf: $(TEXSRC) $(BIBSRC)
 
 clean:
 	rm -f $(DIR_BUILD)/*
+	rm -f answer_sheet.{aux,bbl,bcf,blg,fdb_latexmk,fls,lof,log,out,run.xml,synctex.gz,toc}
+
 
 .PHONY: clean all
