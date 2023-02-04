@@ -8,10 +8,39 @@
 \usepackage{biblatex}
 \addbibresource{references.bib}
 
+\usepackage[T1]{fontenc}
+\usepackage{tgbonum}
+
+\usepackage{listings}
+\usepackage{xcolor}
+
+% Define a custom color
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+
+% Define a custom style
+\lstdefinestyle{myStyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    keepspaces=true,                 
+    numbers=left,       
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2,
+}
+
+% Use \lstset to make myStyle the global default
+\lstset{style=myStyle}
+
 \graphicspath{ {./figures/} }
 
-\title{COMP.SEC.110 Cyber Security II
-    \large Practical Exercise: TITLE HERE\!
+\title{COMP.SEC.110 Cyber Security II\\
+    \large Practical Exercise: Secret-Encryption
 }
 \author{Cuong Nguyen\\ \href{mailto:cuong.nguyen@tuni.fi}{cuong.nguyen@tuni.fi} 
         \and Mahibul Momin\\ \href{mailto:mahibul.momin@tuni.fi}{mahibul.momin@tuni.fi}
@@ -27,9 +56,10 @@
 \newpage
 
 % Content of report would be written here
-% \include{./tex/task1.tex}
+% \include{tex/task1}
 % ...
-% \include{./tex/task2.tex}
+% \include{tex/task2}
+\include{tex/task1}
 
 \printbibliography{}
 
