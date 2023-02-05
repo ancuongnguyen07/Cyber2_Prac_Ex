@@ -9,7 +9,7 @@ DIR_BUILD=build
 all: $(DIR_BUILD)/$(MAIN).pdf
 
 $(DIR_BUILD)/$(MAIN).pdf: $(TEXSRC) $(BIBSRC)
-	latexmk -pdf -pdflatex="texfot pdflatex" $(MAIN) -auxdir=$(DIR_BUILD) -outdir=$(DIR_BUILD)
+	latexmk -pdf -pdflatex="texfot pdflatex " $(MAIN) -auxdir=$(DIR_BUILD) -outdir=$(DIR_BUILD)
 
 clean:
 	rm -rf $(DIR_BUILD)/*
