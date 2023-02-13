@@ -10,14 +10,14 @@
         \hline
         Mode & Effect of bit error at ciphertext block \(C_i\)\\
         \hline
-        ECB & A whole plaintext block \(i\) is affected. The corrupted bits are randomized
-        within a block.\\
+        ECB & A whole plaintext block \(i\) is affected.\\
+         & The corrupted bits are randomized within a block.\\
         \hline
-        CBC & Two plaintext blocks are affected. A specific corrupted bit appears in
-        the next block. Random bit errors appears at block \(i\).\\
+        CBC & Two plaintext blocks are affected. A specific corrupted bit appears in\\
+         & the next block. Random bit errors appears at block \(i\).\\
         \hline
-        CFB & Specific bit error appears at block \(i\).
-            Random bit errors appear at block \(i+1\) (the next block).\\
+        CFB & Specific bit error appears at block \(i\).\\
+          & Random bit errors appear at block \(i+1\) (the next block).\\
         \hline
         OFB & Specific bit error at plaintext block \(i\).\\
         \hline
@@ -138,6 +138,8 @@ block is only XORed with the output of the decryptor, not being sent to the next
 After collecting the observations from above tasks and referencing some sources, we created
 \autoref{tab:error_effect} to illustrate exactly the effect of bit errors. In that table,
 \(C_i\) is the \(i^{th}\) ciphertext block, and \(P_i\) is the \(i^{th}\) plaintext block.
+We can conclude that our prediction before experiments and the observation matches each
+other.
 
 \begin{table}
     \centering
