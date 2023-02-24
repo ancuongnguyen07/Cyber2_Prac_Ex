@@ -1,0 +1,32 @@
+\section{Task 1 --- Becoming a Certificate Authority (CA)}
+%
+
+\textbf{What part of the certificate indicates this is a CA's certificate?}\\
+%
+\begin{verbatim}
+    ...
+    X509v3 Basic Constraints: critical
+    CA:TRUE # this part indicates that it is a CA's cert
+    ...
+\end{verbatim}
+
+\textbf{What part of the certificate indicates this a self-signed
+certificate?}\\
+%
+The field of {\fontfamily{qcr}\selectfont Issuer} and {\fontfamily{qcr}\selectfont
+Subject} matches each other. In this case, \emph{www.modelCA.com} is both
+issuer and subject.
+
+\textbf{Identify the values of elements in the RSA algorithm}\\
+%
+\begin{itemize}
+    \item Public exponent: \(e = 65537 (0x10001)\)
+    \item Private exponent: \(d = 5bdbe62d9cbdb7d07009c75a2551c3 \cdots
+    6a00fce92584dfd1\)
+    \item Modulus: \(n = 00b3b8f0c7b474e74ef020d3d17a4d \cdots
+    18c7e63fcdee82b3\)
+    \item Prime 1: \(p = 00dfa58f87f61cf923f9cce378cf19 \cdots
+    bc60b73f46cbd79b\)
+    \item Prime 2: \(q = 00cdb8b4ae48583e157165ede8f3b1 \cdots
+    278977e906234ec9\)
+\end{itemize}
