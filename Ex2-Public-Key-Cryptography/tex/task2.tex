@@ -1,0 +1,11 @@
+\section{Task 2 --- Generating a Certificate Request for Your Web Server}
+%
+\begin{lstlisting}[language=bash,caption=A command generating CSR for the server]
+openssl req -newkey rsa:2048 -sha256 \
+    -keyout server.key -out server.csr \
+    -subj "/CN=www.student22.com/O=Student22 Inc./C=US" \
+    -passout pass:dees \
+    -addext "subjectAltName = DNS:www.student22.com,\
+                            DNS:www.student22cuong.com,\
+                            DNS:www.student22mahibul.com"
+\end{lstlisting}
