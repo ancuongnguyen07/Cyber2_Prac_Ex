@@ -3,6 +3,11 @@
 
 \textbf{What part of the certificate indicates this is a CA's certificate?}\\
 %
+When a CA issues a certificate, it includes the "Basic Constraints"
+extension in the certificate and sets the "CA" field to "true". This
+indicates that the certificate is a CA certificate and can be used to
+issue other certificates.
+
 \begin{verbatim}
     ...
     X509v3 Basic Constraints: critical
