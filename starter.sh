@@ -5,8 +5,7 @@ mkdir $folder 2> /dev/null
 rm -r ./template/build 2> /dev/null
 cp ./template/* ./$folder
 cd ./$folder
-mkdir tex
-mkdir figures
+mkdir tex figures
 cd ./tex
 for i in {1..$2}
 do
