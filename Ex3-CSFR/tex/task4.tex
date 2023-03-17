@@ -6,7 +6,7 @@
     \centering
     \includegraphics[height=\textheight,width=\textwidth,keepaspectratio]
     {figures/add_friend_countermeasure.png}
-    \caption{CSFR countermeasure prevents the HTTP GET request forging attack.}
+    \caption{CSRF countermeasure prevents the HTTP GET request forging attack.}
     \label{fig:counter_add_friend}
 \end{figure}
 
@@ -22,12 +22,12 @@
     \centering
     \includegraphics[height=\textheight,width=\textwidth,keepaspectratio]
     {figures/edit_profile_countermeasure.png}
-    \caption{CSFR countermeasure prevents the HTTP POST request forging attack.}
+    \caption{CSRF countermeasure prevents the HTTP POST request forging attack.}
     \label{fig:counter_edit_profile}
 \end{figure}
 
 After turn on the CSRF countermeasure by commenting out the {\fontfamily{qcr}\selectfont
-return} line, it turned out that we cannot do CSFR attacks like above. For instance,
+return} line, it turned out that we cannot do CSRF attacks like above. For instance,
 when we conducted the {\fontfamily{qcr}\selectfont add\_friend} attack, Elgg page raised
 an alert noticing that {\fontfamily{qcr}\selectfont \_\_elgg\_token} and
 {\fontfamily{qcr}\selectfont \_\_elgg\_ts} fields are missing
