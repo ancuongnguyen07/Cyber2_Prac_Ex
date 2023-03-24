@@ -183,6 +183,90 @@ later will be encrypted with the pre-agreed parameters and cryptographic algorit
 \subsection{Task 1.b: CA's Certificate}
 %%%%%
 
+\begin{figure}
+    \centering
+    \includegraphics[height=\textheight,width=\textwidth,keepaspectratio]
+    {figures/example_fail_cert.png}
+    \caption{A failed TLS handshake protocol for \url{www.example.com}}
+    \label{fig:handshake_example_fail}
+\end{figure}
+
+Without a valid CA certificate, a TLS handshake failed to establish for \url{www.example.com}
+(see \autoref{fig:handshake_example_fail}).
+To find a valid CA certificate fo \url{www.example.com}, I ran {\fontfamily{qcr}\selectfont
+handshake.py} without changing {\fontfamily{qcr}\selectfont cadir} which revealed that
+the CA certificate needed is \textbf{DigiCert Global
+Root CA} (see \autoref{lst:example_handshake}). After that, I copied the \emph{.pem}
+file named \emph{DigiCert\_Global\_Root\_CA.pem}
+from \url{/etc/ssl/certs} to \url{./client-certs}. Then I made a symbolic link to it by using
+its subject hash value (3513523f) (see \autoref{fig:link_example_cert}). At this point, I
+changed {\fontfamily{qcr}\selectfont cadir} to \url{./client-certs}, and a TLS handshake
+protocol ran successfully (see \autoref{fig:handshake_example_succeed}).
+
+\begin{figure}
+    \centering
+    \includegraphics[height=\textheight,width=\textwidth,keepaspectratio]
+    {figures/link_example_cert.png}
+    \caption{A symbolic link to CA certificate for \url{www.example.com}}
+    \label{fig:link_example_cert}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[height=\textheight,width=\textwidth,keepaspectratio]
+    {figures/handshake_example_succeed.png}
+    \caption{A successful TLS handshake for \url{www.example.com}}
+    \label{fig:handshake_example_succeed}
+\end{figure}
+
+\begin{lstlisting}[language=bash, caption=A successful handshake for \url{www.example.com},
+    label={lst:example_handshake}][h]
+$ python3 handshake.py example.com
+After making TCP connection. Press any key to continue ...
+=== Cipher used: ('TLS_AES_256_GCM_SHA384', 'TLSv1.3', 256)
+=== Server hostname: example.com
+=== Server certificate:
+{'OCSP': ('http://ocsp.digicert.com',),
+ 'caIssuers': ('http://cacerts.digicert.com/DigiCertTLSRSASHA2562020CA1-1.crt',),
+ 'crlDistributionPoints': ('http://crl3.digicert.com/DigiCertTLSRSASHA2562020CA1-4.crl',
+                           'http://crl4.digicert.com/DigiCertTLSRSASHA2562020CA1-4.crl'),
+ 'issuer': ((('countryName', 'US'),),
+            (('organizationName', 'DigiCert Inc'),),
+            (('commonName', 'DigiCert TLS RSA SHA256 2020 CA1'),)),
+ 'notAfter': 'Feb 13 23:59:59 2024 GMT',
+ 'notBefore': 'Jan 13 00:00:00 2023 GMT',
+ 'serialNumber': '0C1FCB184518C7E3866741236D6B73F1',
+ 'subject': ((('countryName', 'US'),),
+             (('stateOrProvinceName', 'California'),),
+             (('localityName', 'Los Angeles'),),
+             (('organizationName',
+               'Internet\xa0Corporation\xa0for\xa0Assigned\xa0Names\xa0and\xa0'
+               'Numbers'),),
+             (('commonName', 'www.example.org'),)),
+ 'subjectAltName': (('DNS', 'www.example.org'),
+                    ('DNS', 'example.net'),
+                    ('DNS', 'example.edu'),
+                    ('DNS', 'example.com'),
+                    ('DNS', 'example.org'),
+                    ('DNS', 'www.example.com'),
+                    ('DNS', 'www.example.edu'),
+                    ('DNS', 'www.example.net')),
+ 'version': 3}
+[{'issuer': ((('countryName', 'US'),),
+             (('organizationName', 'DigiCert Inc'),),
+             (('organizationalUnitName', 'www.digicert.com'),),
+             (('commonName', 'DigiCert Global Root CA'),)),
+  'notAfter': 'Nov 10 00:00:00 2031 GMT',
+  'notBefore': 'Nov 10 00:00:00 2006 GMT',
+  'serialNumber': '083BE056904246B1A1756AC95991C74A',
+  'subject': ((('countryName', 'US'),),
+              (('organizationName', 'DigiCert Inc'),),
+              (('organizationalUnitName', 'www.digicert.com'),),
+              (('commonName', 'DigiCert Global Root CA'),)),
+  'version': 3}]
+After TLS handshake. Press any key to continue ...
+\end{lstlisting}
+
 \begin{figure}[h!]
     \centering
     \includegraphics[height=\textheight,width=\textwidth,keepaspectratio]
@@ -191,7 +275,7 @@ later will be encrypted with the pre-agreed parameters and cryptographic algorit
     \label{fig:cert_verify_failed}
 \end{figure}
 
-In this task, I did experiments with two websites: \url{www.tuni.fi} and \url{www.aalto.fi}.
+In this task, I did additional experiments with two websites: \url{www.tuni.fi} and \url{www.aalto.fi}.
 These two web servers require different CA certificates. Without proper CA certificates
 in the \url{./client-certs}, {\fontfamily{qcr}\selectfont handshake.py} raised an error
 of ssl certificate verification (see \autoref{fig:cert_verify_failed}).
@@ -362,3 +446,8 @@ After making TCP connection. Press any key to continue ...
   'version': 3}]
 
 \end{lstlisting}
+
+%%%%%
+\subsection{Task 1.c: Experiment with the hostname check}
+%%%%%
+
