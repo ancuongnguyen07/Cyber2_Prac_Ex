@@ -451,3 +451,85 @@ After making TCP connection. Press any key to continue ...
 \subsection{Task 1.c: Experiment with the hostname check}
 %%%%%
 
+\begin{figure}
+    \centering
+    \includegraphics[height=\textheight,width=\textwidth,keepaspectratio]
+    {figures/hostname_check_false.png}
+    \caption{A TLS handshake runs successfully with a valid certificate of another
+    website if the hostname is not checked.}
+    \label{fig:hostname_check_false}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[height=\textheight,width=\textwidth,keepaspectratio]
+    {figures/alt_name_example.png}
+    \caption{List of alternative names for \url{www.example.org}.}
+    \label{fig:example_alt_name}
+\end{figure}
+
+In the case of \emph{check\_hostname = False}, the certificate for \url{www.example.com}
+can be used to verify \url{www.example2020.com} though the list of alternative names
+does not contain \url{www.example2020.com} (see \autoref{fig:example_alt_name} and
+\autoref{fig:hostname_check_false}). As I mapped the hostname \url{www.example2020.com}
+to the same IP addresss of \url{www.example.com} and the program did not check whether
+the target hostname \url{www.example2020.com} is a common name or in the list of
+alternative names, the valid certificate can be used for the fake hostname here.
+
+\begin{figure}
+    \centering
+    \includegraphics[height=\textheight,width=\textwidth,keepaspectratio]
+    {figures/hostname_check_true.png}
+    \caption{The wrong certificate cannot be verified successfully if the
+    hostname is checked.}
+    \label{fig:hostname_check_true}
+\end{figure}
+
+In the case of \emph{check\_hostname = True}, the certificate for \url{www.example.com}
+cannot be used for \url{www.example2020.com} anymore, resulting a \emph{SSLCertVerificationError}
+(see \autoref{fig:hostname_check_true}). The program checked the hostname and recognized
+that it does not appear in the certificate.
+
+It is shown that checking hostname is a vital step. If it is not performed, an attacker can
+use a valid certificate of another website to trick the TLS program trusting that his fake
+website has a valid certificate.
+
+
+%%%%%
+\subsection{Task 1.d: Sending and getting Data}
+%%%%%
+
+\begin{figure}
+    \centering
+    \includegraphics[height=\textheight,width=\textwidth,keepaspectratio]
+    {figures/http_req_index.png}
+    \caption{HTTP response of the index page of \url{www.seedsecuritylabs.org}.}
+    \label{fig:seedlab_http_res_index}
+\end{figure}
+
+In this work, I did experiment with SEED lab host \url{www.seedsecuritylabs.org}.
+The header and the body of HTTP response are shown in \autoref{fig:seedlab_http_res_index}.
+The body is HTML code of the index page (\emph{index.html}).
+
+\begin{lstlisting}[language=python, caption=A modified HTTP GET request,
+    label={lst:http_req_img_fetch}]
+request = b"GET /assets/images/lecture.jpg HTTP/1.0>
+            hostname.encode('utf-8') + \
+                b"\r\n\r\n"
+\end{lstlisting}
+
+In the second task, I wanted to
+fetch an image at \url{https://seedsecuritylabs.org/assets/images/lecture.jpg}. Hence, I modified
+the HTTP GET request so that the request asks resources from the path \url{/assets/images/lecture.jpg}
+instead of an index page \emph{/} as shown in the instruction (see
+\autoref{lst:http_req_img_fetch}). The header and body of HTTP response are shown in
+\autoref{fig:byte_fetch_image}. The body of the response is byte values of the image.
+
+
+\begin{figure}
+    \centering
+    \includegraphics[height=\textheight,width=\textwidth,keepaspectratio]
+    {figures/http_req_image_fetching.png}
+    \caption{Byte values of a fetched image and the HTTP response.}
+    \label{fig:byte_fetch_image}
+\end{figure}
