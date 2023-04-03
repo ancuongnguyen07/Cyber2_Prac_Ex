@@ -1,0 +1,18 @@
+\section{Task 2: Posting a Malicious Message to Display Cookies}
+%
+\begin{figure}
+    \centering
+    \includegraphics[height=\textheight,width=\textwidth,keepaspectratio]
+    {figures/display_user_cookie.png}
+    \caption{User's cookie is displayed when someone visit Boby's profile.}
+    \label{fig:display_cookie}
+\end{figure}
+
+We embeded the script below to the \emph{Brief description} field of Boby's profile:
+
+\begin{lstlisting}
+    <script>alert(document.cookie);</script>
+\end{lstlisting}
+
+As you can see in \autoref{fig:display_cookie}, the cookie of the user visting the web page
+has a key/value pair: \emph{Elgg=pkq5m1eiag30duldq393fog7lv}.

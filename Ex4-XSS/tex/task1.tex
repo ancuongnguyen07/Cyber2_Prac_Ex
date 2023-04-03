@@ -1,0 +1,20 @@
+\section{Task 1: Posting a Malicious Message to Display an Alert Window}
+%
+
+\begin{figure}
+    \centering
+    \includegraphics[height=\textheight,width=\textwidth,keepaspectratio]
+    {figures/display_alert_xss.png}
+    \caption{An warning box pop up as an output of the embed script.}
+    \label{fig:alert_display_box}
+\end{figure}
+
+We selected the {\fontfamily{qcr}\selectfont Boby} account to test
+the script below:
+
+\begin{lstlisting}
+    <script>alert('XSS')</script>
+\end{lstlisting}
+
+When the script is executed, a pop-up box showing `XSS' appears (see \autoref{fig:alert_display_box}).
+We embeded the malicious script in the \emph{Brief description} field.
