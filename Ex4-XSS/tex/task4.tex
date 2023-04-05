@@ -58,7 +58,8 @@ Samy as a friend without his/her attention (see \autoref{fig:samy_friend_boby}).
     \label{fig:XSS_script_add_friend}
 \end{figure}
 
-\textbf{Question 1: Explain the purpose of Line 1 and 2, why are they are needed?}\\
+\textbf{Question 1: Explain the purpose of Line 1 and 2, why are they are needed?}
+
 Line 1 and 2 are for retrieving the security tokens needed for
 validating if the HTTP request comes from the same site (preventing CSRF attack).
 If these two tokens are not attached to the request, the web server will treat that
@@ -67,7 +68,8 @@ In the script, these two tokens are stored in two variables that are inserted in
 HTTP GET request as parameters.
 
 \textbf{Question 2: If the Elgg application only provide the Editor mode for the "About me"
-field, i.e., you cannot switch to the Text mode, can you still launch a successful attack?}\\
+field, i.e., you cannot switch to the Text mode, can you still launch a successful attack?}
+
 The attack cannot be done successfully since some special charaters needed to make a script
 are encoded into other charaters. For instance, we made a simple script
 
