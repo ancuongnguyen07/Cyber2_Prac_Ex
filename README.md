@@ -1,6 +1,8 @@
 # Cyber2_Prac_Ex
 This repo contains all report of practical exercises in the course Cyber Security 2 at Tampere University
 
+All practical exercises in this course are based on SEED labs. Please find more information about those labs here: https://seedsecuritylabs.org/Labs_20.04/
+
 ## Installing LaTeX
 
 Follow the link here: https://www.latex-project.org/get/
